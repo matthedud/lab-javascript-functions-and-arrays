@@ -146,7 +146,6 @@ function greatestProduct(matrice) {
       if (multiRes > result) result = multiRes;
     }
   }
-
   for (let ligneIndex = 0; ligneIndex < matrice.length - 3; ligneIndex++) {
     for (let columnInd = 0; columnInd < matrice.length; columnInd++) {
       const multiRes =
@@ -155,6 +154,35 @@ function greatestProduct(matrice) {
         matrice[ligneIndex + 2][columnInd] *
         matrice[ligneIndex + 3][columnInd];
       if (multiRes > result) result = multiRes;
+    }
+  }
+  return result;
+}
+
+function betterGreatestProduct(matrice) {
+  let result = 0;
+  for (let ligneIndex = 0; ligneIndex < matrice.length - 3; ligneIndex++) {
+    for (let columnInd = 0; columnInd < matrice.length; columnInd++) {
+      const multiColoneRes =
+        matrice[ligneIndex][columnInd] *
+        matrice[ligneIndex + 1][columnInd] *
+        matrice[ligneIndex + 2][columnInd] *
+        matrice[ligneIndex + 3][columnInd];
+      const multiLigneRes =
+        matrice[columnInd][columnInd] *
+        matrice[columnInd][columnInd + 1] *
+        matrice[columnInd][columnInd + 2] *
+        matrice[columnInd][columnInd + 3];
+      if (columnInd <= matrice.length) {
+        const multiDiagRes =
+          matrice[ligneIndex][columnInd] *
+          matrice[ligneIndex + 1][columnInd + 1] *
+          matrice[ligneIndex + 2][columnInd + 2] *
+          matrice[ligneIndex + 3][columnInd + 3];
+        if (multiDiagRes > result) result = multiDiagRes;
+      }
+      if (multiColoneRes > result) result = multiColoneRes;
+      if (multiLigneRes > result) result = multiLigneRes;
     }
   }
   return result;
@@ -174,6 +202,7 @@ if (typeof module !== 'undefined') {
     uniquifyArray,
     doesWordExist,
     howManyTimes,
-    greatestProduct
+    greatestProduct,
+    betterGreatestProduct
   };
 }
