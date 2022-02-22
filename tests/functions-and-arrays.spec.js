@@ -336,4 +336,34 @@ describe('Bonus Quest - greatestProduct', () => {
     ];
     expect(greatestProduct(matrix)).toBe(16);
   });
+  test('should return 160000 when all the numbers of the arrays mixed', () => {
+    let matrix = [
+      [ 1,  20, 20, 20, 20],
+      [ 1, 1, 1, 1, 1],
+      [ 1, 1, 1, 1, 1],
+      [ 1, 1, 1, 1, 1],
+      [ 1,  1, 1, 1, 1],
+    ];
+    expect(greatestProduct(matrix)).toBe(160000);
+  });
+  test('should return 160000 when all the numbers of the arrays mixed', () => {
+    let matrix = [
+      [ 1,  1, 1, 1, 1],
+      [ 20, 1, 1, 1, 1],
+      [ 20, 1, 1, 1, 1],
+      [ 20, 1, 1, 1, 1],
+      [ 20,  1, 1, 1, 1],
+    ];
+    expect(greatestProduct(matrix)).toBe(160000);
+  });
+  test('should return 32000 when all the numbers of the arrays mixed', () => {
+    let matrix = [
+      [ 1,  2, 3, 4, 5],
+      [ 1, 20, 3, 4, 5],
+      [ 1, 20, 3, 4, 5],
+      [ 1, 20, 3, 4, 5],
+      [ 1,  4, 3, 4, 5],
+    ];
+    expect(greatestProduct(matrix)).toBe(32000);
+  });
 });

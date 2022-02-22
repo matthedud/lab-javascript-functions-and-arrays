@@ -139,24 +139,25 @@ const matrix = [
 ];
 
 function greatestProduct(matrice) {
-  switch (matrice[0][0]) {
-    case 1:
-      for (const line of matrice) {
-        for (const element of line) {
-          if (element !== 1) return false;
-        }
-      }
-      return 1;
-    case 2:
-      for (const line of matrice) {
-        for (const element of line) {
-          if (element !== 2) return false;
-        }
-      }
-      return 16;
-    default:
-      false;
+  let result = 0;
+  for (const line of matrice) {
+    for (let i = 0; i < line.length - 3; i++) {
+      const multiRes = line[i] * line[i + 1] * line[i + 2] * line[i + 3];
+      if (multiRes > result) result = multiRes;
+    }
   }
+
+  for (let ligneIndex = 0; ligneIndex < matrice.length - 3; ligneIndex++) {
+    for (let columnInd = 0; columnInd < matrice.length; columnInd++) {
+      const multiRes =
+        matrice[ligneIndex][columnInd] *
+        matrice[ligneIndex + 1][columnInd] *
+        matrice[ligneIndex + 2][columnInd] *
+        matrice[ligneIndex + 3][columnInd];
+      if (multiRes > result) result = multiRes;
+    }
+  }
+  return result;
 }
 
 // The following is required to make unit tests work.
